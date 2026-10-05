@@ -23,7 +23,7 @@ How did container volumes at major U.S. ports recover after the 2020 disruption,
 
 ## Dashboard
 
-![Dashboard overview](screenshots/dashboard-overview.png)
+![Dashboard overview](https://github.com/martinmd3/michael-martin-portfolio/blob/785076b24de166828a76075c3dbe7bad5f14e769/port%20project%20dashboard.png)
 
 The dashboard includes a port filter, an aggregate volume trend, a total-throughput ranking by port, a year-over-year growth comparison, and a full monthly time series by port.
 
