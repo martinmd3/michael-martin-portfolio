@@ -1,35 +1,73 @@
-# michael-martin-portfolio
-# U.S. Port Activity Dashboard
+# Library Management System
 
-An interactive Power BI dashboard analyzing monthly container throughput across nine major U.S. ports from 2020–2023, built to understand how port activity recovered and diverged in the years following the pandemic.
+A command-line library catalog written in Java. It loads books, magazines, and DVDs from a text file and lets you search, sort, check out, return, add, and delete items from a menu.
 
-## The Question
+Built to practice object-oriented design: an abstract base class, an interface, and subclasses that share behavior but format their own details.
 
-How did container volumes at major U.S. ports recover after the 2020 disruption, and why did some ports grow faster than others?
+## Features
 
-## Data & Methodology
+- Load inventory from `inventory.txt` at startup
+- Display all items with type-specific details (ISBN for books, issue/month for magazines, runtime/rating for DVDs)
+- Search by title or by item ID
+- Sort by title (A-Z), publication year (oldest first), or availability
+- Check out and return items, with checks for "already checked out" / "already available"
+- Add and delete items, with input validation for numeric fields
 
-- **Source:** U.S. Department of Transportation, Bureau of Transportation Statistics (BTS)
-- **Scope:** Monthly TEU (twenty-foot equivalent unit) throughput for nine U.S. container ports, January 2020–August 2023
-- **Tools:** Data cleaned and reshaped in Power Query; dashboard and DAX measures built in Power BI
-- **Note:** Year-over-year growth comparisons use complete calendar years (2020–2022) to avoid partial-year distortion
+## OOP concepts demonstrated
 
-## Key Findings
+| Concept | Where |
+|---|---|
+| Abstract class | `MediaItem` holds shared fields (ID, title, author/director, year, availability) and an abstract `getItemDetails()` |
+| Inheritance | `Book`, `DVD`, and `Magazine` extend `MediaItem` |
+| Interface | `Loanable` (`markAsLoaned`, `returnLoaned`, `calculateLateFee`) implemented by all three item types |
+| Polymorphism | One `ArrayList<MediaItem>` holds all item types; each prints itself via its own `getItemDetails()` |
+| File I/O | `BufferedReader` parses `inventory.txt`; unknown types and malformed numbers are handled with try/catch |
+| Sorting | `Collections.sort` with custom `Comparator`s |
 
-- **Sharp recovery, then a plateau.** Total monthly throughput across all nine ports fell sharply in early 2020, recovered through the remainder of the year, and rose about 16.5% from 2020 to 2021. 2022 volume was essentially flat versus 2021.
-- **Growth was uneven across ports.** From 2020–2022, Houston (+32.3%) and the Port of Virginia (+31.6%) grew far faster than the largest ports, while Oakland declined (-5.0%).
-- **Scale and growth rate are different things.** Los Angeles and Long Beach handled the most total volume by far, but they were not the fastest-growing — a reminder that "biggest" and "fastest-growing" answer different questions.
-- **A plausible explanation for the shift:** 2021–2022 is well documented as a period of severe congestion at the Port of Los Angeles and Port of Long Beach. Contemporary industry reporting described cargo being redirected toward East and Gulf Coast ports — including Houston, Virginia, and Charleston — to avoid West Coast delays. This offers a plausible (not proven) explanation for why Houston and Virginia outpaced the West Coast's largest ports during this window.
+## Run it
 
-## Dashboard
+Requires JDK 8 or newer. From the project folder:
 
-![Dashboard overview](https://github.com/martinmd3/michael-martin-portfolio/blob/785076b24de166828a76075c3dbe7bad5f14e769/port%20project%20dashboard.png)
+```
+javac *.java
+java LibraryManagementSystem
+```
 
-The dashboard includes a port filter, an aggregate volume trend, a total-throughput ranking by port, a year-over-year growth comparison, and a full monthly time series by port.
+Run from the folder that contains `inventory.txt`, since the file is loaded by relative path.
 
-## Tools Used
+You'll see:
 
-Power BI · Power Query · DAX
+```
+===== Library Menu =====
+1. Display all items
+2. Search items
+3. Sort items
+4. Update item (Check out / Return)
+5. Add item
+6. Delete item
+0. Exit
+```
 
----
-*Michael Martin | [LinkedIn](https://www.linkedin.com/in/michael-martin-917b47327/)*
+## Inventory file format
+
+One item per line, comma-separated:
+
+```
+Book, ID, Title, Author, Year, Genre, ISBN
+Magazine, ID, Title, Publisher, Year, IssueNumber, Month
+DVD, ID, Title, Director, Year, RuntimeMinutes, Rating
+```
+
+## Known limitations
+
+- Changes (checkouts, additions, deletions) live in memory only and are not written back to `inventory.txt`
+- Title search is an exact, case-sensitive match
+- `calculateLateFee` is a stub that returns 0.0; there's no due-date tracking yet
+- Titles containing commas would break the file parser
+
+## Possible next steps
+
+- Save changes back to the file
+- Case-insensitive, partial-match search
+- Due dates and a real late-fee calculation
+- Unit tests for the item classes
