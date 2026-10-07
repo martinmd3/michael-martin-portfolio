@@ -4,7 +4,7 @@ I'm a Computer Information Systems major at the College of Charleston (Honors Co
 
 ## Featured Project
 
-### [U.S. Port Activity Dashboard — Power BI](./port-activity-dashboard)
+### [U.S. Port Activity Dashboard — Power BI](./Power-BI-Project)
 An interactive Power BI dashboard analyzing monthly container throughput across nine major U.S. ports from 2020–2023. Cleaned and reshaped U.S. Department of Transportation data in Power Query, then identified which ports grew fastest after the pandemic and explored a plausible explanation tied to 2021–2022 West Coast port congestion.
 
 **Tools:** Power BI · Power Query · DAX
