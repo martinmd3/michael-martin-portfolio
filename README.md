@@ -1,73 +1,25 @@
-# Library Management System
+Hi, I'm Michael
 
-A command-line library catalog written in Java. It loads books, magazines, and DVDs from a text file and lets you search, sort, check out, return, add, and delete items from a menu.
+I'm a Computer Information Systems major at the College of Charleston (Honors College, minoring in Business Analytics, graduating May 2028). I'm interested in turning data into decisions: business and data analytics, IT, and health IT. I'm looking for a summer 2027 internship.
 
-Built to practice object-oriented design: an abstract base class, an interface, and subclasses that share behavior but format their own details.
+## Featured Project
 
-## Features
+### [U.S. Port Activity Dashboard — Power BI](./Power-BI-Project)
+An interactive Power BI dashboard analyzing monthly container throughput across nine major U.S. ports from 2020–2023. Cleaned and reshaped U.S. Department of Transportation data in Power Query, then identified which ports grew fastest after the pandemic and explored a plausible explanation tied to 2021–2022 West Coast port congestion.
 
-- Load inventory from `inventory.txt` at startup
-- Display all items with type-specific details (ISBN for books, issue/month for magazines, runtime/rating for DVDs)
-- Search by title or by item ID
-- Sort by title (A-Z), publication year (oldest first), or availability
-- Check out and return items, with checks for "already checked out" / "already available"
-- Add and delete items, with input validation for numeric fields
+**Tools:** Power BI · Power Query · DAX
 
-## OOP concepts demonstrated
+---
 
-| Concept | Where |
-|---|---|
-| Abstract class | `MediaItem` holds shared fields (ID, title, author/director, year, availability) and an abstract `getItemDetails()` |
-| Inheritance | `Book`, `DVD`, and `Magazine` extend `MediaItem` |
-| Interface | `Loanable` (`markAsLoaned`, `returnLoaned`, `calculateLateFee`) implemented by all three item types |
-| Polymorphism | One `ArrayList<MediaItem>` holds all item types; each prints itself via its own `getItemDetails()` |
-| File I/O | `BufferedReader` parses `inventory.txt`; unknown types and malformed numbers are handled with try/catch |
-| Sorting | `Collections.sort` with custom `Comparator`s |
+## Other Projects
 
-## Run it
+### [Library Management System — Java](./library-management-system)
+A multi-file Java console application with a menu-driven interface for book search, checkout, availability, and inventory management, built using object-oriented programming and modular design.
 
-Requires JDK 8 or newer. From the project folder:
+**Tools:** Java
 
-```
-javac *.java
-java LibraryManagementSystem
-```
+---
 
-Run from the folder that contains `inventory.txt`, since the file is loaded by relative path.
+More projects coming as I build them — this repo will keep growing.
 
-You'll see:
-
-```
-===== Library Menu =====
-1. Display all items
-2. Search items
-3. Sort items
-4. Update item (Check out / Return)
-5. Add item
-6. Delete item
-0. Exit
-```
-
-## Inventory file format
-
-One item per line, comma-separated:
-
-```
-Book, ID, Title, Author, Year, Genre, ISBN
-Magazine, ID, Title, Publisher, Year, IssueNumber, Month
-DVD, ID, Title, Director, Year, RuntimeMinutes, Rating
-```
-
-## Known limitations
-
-- Changes (checkouts, additions, deletions) live in memory only and are not written back to `inventory.txt`
-- Title search is an exact, case-sensitive match
-- `calculateLateFee` is a stub that returns 0.0; there's no due-date tracking yet
-- Titles containing commas would break the file parser
-
-## Possible next steps
-
-- Save changes back to the file
-- Case-insensitive, partial-match search
-- Due dates and a real late-fee calculation
-- Unit tests for the item classes
+*[LinkedIn](https://www.linkedin.com/in/michael-martin-917b47327/)*
