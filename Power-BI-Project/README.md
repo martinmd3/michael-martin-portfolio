@@ -1,4 +1,3 @@
-# michael-martin-portfolio
 # U.S. Port Activity Dashboard
 
 An interactive Power BI dashboard analyzing monthly container throughput across nine major U.S. ports from 2020–2023, built to understand how port activity recovered and diverged in the years following the pandemic.
