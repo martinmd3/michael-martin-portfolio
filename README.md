@@ -11,6 +11,13 @@ An interactive Power BI dashboard analyzing monthly container throughput across 
 
 ---
 
+### [SC County Health Dashboard — Power BI](./sc-county-health)
+A two-page Power BI dashboard exploring which county-level conditions — poverty, smoking, education, healthcare access, rurality — are most associated with differences in life expectancy across South Carolina's 46 counties.
+
+**Tools:** Power BI · Power Query
+
+---
+
 ## Other Projects
 
 ### [Library Management System — Java](./library-management-system)
